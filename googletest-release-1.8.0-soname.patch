@@ -1,0 +1,31 @@
+diff -uNr googletest-release-1.8.0.orig/googlemock/CMakeLists.txt googletest-release-1.8.0/googlemock/CMakeLists.txt
+--- googletest-release-1.8.0.orig/googlemock/CMakeLists.txt	2017-08-22 21:05:11.661406791 +0300
++++ googletest-release-1.8.0/googlemock/CMakeLists.txt	2017-08-22 21:17:53.916359474 +0300
+@@ -85,12 +85,14 @@
+             "${cxx_strict}"
+             "${gtest_dir}/src/gtest-all.cc"
+             src/gmock-all.cc)
++set_target_properties(gmock PROPERTIES VERSION 0.0.0 SOVERSION 0)
+ 
+ cxx_library(gmock_main
+             "${cxx_strict}"
+             "${gtest_dir}/src/gtest-all.cc"
+             src/gmock-all.cc
+             src/gmock_main.cc)
++set_target_properties(gmock_main PROPERTIES VERSION 0.0.0 SOVERSION 0)
+ 
+ # If the CMake version supports it, attach header directory information
+ # to the targets for when we are part of a parent build (ie being pulled
+diff -uNr googletest-release-1.8.0.orig/googletest/CMakeLists.txt googletest-release-1.8.0/googletest/CMakeLists.txt
+--- googletest-release-1.8.0.orig/googletest/CMakeLists.txt	2017-08-22 21:05:11.778404021 +0300
++++ googletest-release-1.8.0/googletest/CMakeLists.txt	2017-08-22 21:18:45.799131086 +0300
+@@ -88,7 +88,9 @@
+ # are used for other targets, to ensure that gtest can be compiled by a user
+ # aggressive about warnings.
+ cxx_library(gtest "${cxx_strict}" src/gtest-all.cc)
++set_target_properties(gtest PROPERTIES VERSION 0.0.0 SOVERSION 0)
+ cxx_library(gtest_main "${cxx_strict}" src/gtest_main.cc)
++set_target_properties(gtest_main PROPERTIES VERSION 0.0.0 SOVERSION 0)
+ target_link_libraries(gtest_main gtest)
+ 
+ # If the CMake version supports it, attach header directory information
